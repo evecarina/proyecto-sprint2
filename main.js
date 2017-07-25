@@ -2,7 +2,6 @@
 var body = document.body;
 var list1 = document.createElement("ul");
 
-
 var tareas=[{
     userId: 1,
     id: 1,
@@ -64,23 +63,31 @@ var tareas=[{
     completed: true
   }];
 
-for(i=0;i<10;i++){
+function Datos(userId,id,title,completed){
+  this.userId=userId,
+  this.id=id,
+  this.title=title,
+  this.completed=completed
+ };
+
+function lista(){
+	//body.renderInElement (body.appendChild(list1)); 
+	var lista= new Datos(8,12,document.getElementById("tarea").value,true);
+    tareas.push(lista);
+    mostrar();
+
+}
+
+function mostrar(){ 
+for(i=0;i<tareas.length;i++){
    var li = document.createElement("li");
     li.innerHTML = (tareas[i].title);
     list1.appendChild(li);
 }
 body.appendChild(list1);
-
-
-
-
-function lista(){
-	var lista={
-		title: document.getElementById('tarea').value
-    		}
-    		tarea.push(lista);
-
 }
+mostrar();
+
 
 
 /*
