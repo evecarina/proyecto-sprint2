@@ -1,6 +1,15 @@
 
-var body = document.body;
-var list1 = document.createElement("ul");
+var s;
+var celdas = document.getElementsByTagName('li');
+for (var i = 0; i < celdas.length; i++) {
+    celdas[i].addEventListener('click',redirect,false);
+}
+
+ function redirect(event){
+    document.getElementById("lista").innerHTML=(event.target.textContent);
+    s=event.target.textContent;
+ }
+console.log(s);
 
 var tareas=[{
     userId: 1,
@@ -63,55 +72,32 @@ var tareas=[{
     completed: true
   }];
 
-function Datos(userId,id,title,completed){
+  function Datos(userId,id,title,completed){
   this.userId=userId,
   this.id=id,
   this.title=title,
   this.completed=completed
- };
+ }
 
 
 function lista(){
-	//body.renderInElement (body.appendChild(list1));
-	var lista= new Datos(8,12,document.getElementById("tarea").value,true);
+  //body.renderInElement (body.appendChild(list1));
+   var lista= new Datos(8,12,document.getElementById("tarea").value,true);
+  document.getElementById('tarea').value="";
     tareas.push(lista);
-    mostrar();
-
-}
-/*
-function mostrar(){
-    var html="";
-  for(i=0;i<tareas.length;i++){
-   var li = document.createElement("li");
-    li.innerHTML = html;
-    li.innerHTML = (tareas[i].title);
-    list1.appendChild(li);
-
+   mostrar();
 }
 
-body.appendChild(list1);
-}*/
+function mostrar(){ 
 
-function mostrar(){
-var html = "";
- for (var i =0; i<tareas.length;i++){
-  var dato_1 = tareas[i];
-  //alert (dato_1);
-  var s = "<li>"+ dato_1.title +"</li>";
-  html += s;
- }
-var lista = document.getElementById('list');
-lista.innerHTML = html;
+  var html = "";
+
+  for (var i = 0; i < tareas.length; i++) {
+
+    html += "<li>" + tareas[i].title+ "</li>" ;
+  }
+  document.getElementById("mostrar").innerHTML = html;
 }
-mostrar();
-
-
-
-/*
-function limpiar (){
-  var resultado=document.getElementById('resultado');
-var res=document.getElementsByTagName('input').value="";
-resultado.innerHTML=res;
-}*/
+  mostrar();
 
 
