@@ -1,15 +1,5 @@
 
 var s;
-var celdas = document.getElementsByTagName('li');
-for (var i = 0; i < celdas.length; i++) {
-    celdas[i].addEventListener('click',redirect,false);
-}
-
- function redirect(event){
-    document.getElementById("lista").innerHTML=(event.target.textContent);
-    s=event.target.textContent;
- }
-console.log(s);
 
 var tareas=[{
     userId: 1,
@@ -72,32 +62,71 @@ var tareas=[{
     completed: true
   }];
 
-  function Datos(userId,id,title,completed){
+function Datos(userId,id,title,completed){
   this.userId=userId,
   this.id=id,
   this.title=title,
   this.completed=completed
  }
 
-
 function lista(){
   //body.renderInElement (body.appendChild(list1));
-   var lista= new Datos(8,12,document.getElementById("tarea").value,true);
-  document.getElementById('tarea').value="";
-    tareas.push(lista);
-   mostrar();
+   var lista= new Datos(8,12,document.getElementById("tarea").value,false);
+   document.getElementById('tarea').value="";
+   tareas.push(lista);
+    mostrar();
+ 
+
 }
 
 function mostrar(){ 
 
   var html = "";
-
   for (var i = 0; i < tareas.length; i++) {
-
-    html += "<li>" + tareas[i].title+ "</li>" ;
+    
+      if(tareas [i].completed==true){
+        html += "<li><del>" + tareas[i].title+ "</del></li>";
+      }else
+      html += "<li>" + tareas[i].title+ "</li>";
+         
   }
+
   document.getElementById("mostrar").innerHTML = html;
+
 }
-  mostrar();
+
+// obtener valor del texto
+/*
+var celdas = document.getElementsByTagName('li');
+for (var i = 0; i < celdas.length; i++) {
+    celdas[i].onclick=function(event){
+      redirect(event);
+    };
+}
+
+ function redirect(event){
+   // document.getElementById("lista").innerHTML=(event.target.textContent);
+   var s=event.target.textContent;
+   console.log(s);
+}*/
+
+function sombrear (){
+  var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+
+    if(tareas [0].completed==true){
+        tareas[0].completed==false;
+    }else
+      tareas[0].completed==true;
+
+  }
+}, false);
+mostrar();
+}
+sombrear();
+
+
 
 
