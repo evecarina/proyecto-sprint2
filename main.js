@@ -70,35 +70,48 @@ function Datos(userId,id,title,completed){
   this.completed=completed
  };
 
+
 function lista(){
-	//body.renderInElement (body.appendChild(list1)); 
+	//body.renderInElement (body.appendChild(list1));
 	var lista= new Datos(8,12,document.getElementById("tarea").value,true);
     tareas.push(lista);
     mostrar();
 
 }
-
-function mostrar(){ 
-for(i=0;i<tareas.length;i++){
+/*
+function mostrar(){
+    var html="";
+  for(i=0;i<tareas.length;i++){
    var li = document.createElement("li");
+    li.innerHTML = html;
     li.innerHTML = (tareas[i].title);
     list1.appendChild(li);
+
 }
+
 body.appendChild(list1);
+}*/
+
+function mostrar(){
+var html = "";
+ for (var i =0; i<tareas.length;i++){
+  var dato_1 = tareas[i];
+  //alert (dato_1);
+  var s = "<li>"+ dato_1.title +"</li>";
+  html += s;
+ }
+var lista = document.getElementById('list');
+lista.innerHTML = html;
 }
 mostrar();
 
 
 
 /*
-function Añadir (){
-	var tarea=document.getElementById('tarea').value;
-	var resultado=document.getElementById("resultado");
-	var res=tarea;
-	resultado.innerHTML=res;
+function limpiar (){
+  var resultado=document.getElementById('resultado');
+var res=document.getElementsByTagName('input').value="";
+resultado.innerHTML=res;
+}*/
 
-
-
-}
-*/
 
