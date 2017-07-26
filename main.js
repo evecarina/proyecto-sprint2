@@ -94,7 +94,6 @@ function mostrar(){
   document.getElementById("mostrar").innerHTML = html;
 
 }
-
 // obtener valor del texto
 /*
 var celdas = document.getElementsByTagName('li');
